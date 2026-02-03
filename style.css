@@ -73,6 +73,7 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     background: shsla(237, 95%, 60%, 0.123);
+    transition: all 0.3s ease;
 }
 
 .navbar__menu-link {
@@ -83,6 +84,7 @@ body {
     padding: 8px;
     border-radius: 15px;
     color: #ffffff;
+    transition: all 0.4s ease;
 }
 
 .navbar__menu-link:active {
@@ -92,6 +94,6 @@ body {
 .navbar__menu-link--active {
     font-size: 1.5rem;
     font-weight: 600;
-    background: #000000;
-    color: #4400ff;
+    background: #181824;
+    color: #ff0000;
 }
