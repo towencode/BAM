@@ -1,0 +1,97 @@
+/*        Import Google Fonts       */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background: #0D1433;
+}
+
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 0;
+    margin-top: 10px;
+    z-index: 999;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px;
+    height: 70px;
+    background: #6c90c32d;
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 2px 5px hsl(0, 1%, 54%);
+    border-radius: 15px;
+}
+
+.navbar__logo {
+    color: hsl(0, 0%, 100%);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: "Playwrite NZ Basic", cursive;
+    cursor: pointer;
+}
+
+.navbar__toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    z-index: 999;
+}
+
+.navbar__toggle-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    color: hsl(0, 0%, 100%);
+}
+
+.navbar__menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    background: shsla(237, 95%, 60%, 0.123);
+}
+
+.navbar__menu-link {
+    text-decoration: none;
+    font-size: 1.3rem;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
+.navbar__menu-link:active {
+    font-size: 1.2rem;
+}
+
+.navbar__menu-link--active {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: #000000;
+    color: #4400ff;
+}
