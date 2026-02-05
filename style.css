@@ -70,9 +70,7 @@ body {
     justify-content: space-between;
     gap: 1rem;
     padding: 15px;
-    backdrop-filter: blur(10px);
     border-radius: 15px;
-    background: shsla(237, 95%, 60%, 0.123);
     transition: all 0.3s ease;
 }
 
@@ -92,8 +90,50 @@ body {
 }
 
 .navbar__menu-link--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 20px;
     font-size: 1.5rem;
     font-weight: 600;
-    background: #181824;
-    color: #ff0000;
+    background: #350304;
+    color: #d1d1d1;
+    transition: all 3s ease;
+}
+
+@property --deg {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+}
+
+@keyframes spin {
+    to {
+        --deg: 360deg;
+    }
+}
+
+.navbar__menu-link--active::before,
+.navbar__menu-link--active::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--deg) at center,
+        #e5ff00,
+        #000000,
+        #000000,
+        #f6ff00
+    );
+    z-index: -2;
+    padding: 2px;
+    transition: all 3s ease;
+    animation: spin 3s linear infinite;
+}
+
+.navbar__menu-link--active::before {
+    filter: blur(10px);
 }
