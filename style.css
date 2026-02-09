@@ -19,7 +19,7 @@ body {
     justify-content: center;
     width: 100%;
     height: auto;
-    position: sticky;
+    position: static;
     top: 0;
     margin-top: 10px;
     z-index: 999;
@@ -82,7 +82,7 @@ body {
     padding: 8px;
     border-radius: 15px;
     color: #ffffff;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .navbar__menu-link:active {
@@ -91,17 +91,27 @@ body {
 
 .navbar__menu-link--active {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 10px 20px;
+    padding: 8;
     font-size: 1.5rem;
     font-weight: 600;
-    background: #350304;
-    color: #d1d1d1;
-    transition: all 3s ease;
+    color: #ff0000;
+    transition: all 0.4s ease;
 }
 
+.navbar__menu-link--active::after {
+    content: "";
+    width: 100%;
+    height: 8%;
+    position: absolute;
+    border-radius: 20px;
+    bottom: 0;
+    background: #4800ff;
+}
+/*
 @property --deg {
     syntax: '<angle>';
     inherits: true;
@@ -137,3 +147,4 @@ body {
 .navbar__menu-link--active::before {
     filter: blur(10px);
 }
+*/
