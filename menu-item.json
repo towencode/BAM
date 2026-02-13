@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "image": "images/about-image.jpg",
+        "name": "Esperso",
+        "price": 2.54
+    },
+    {
+        "id": 2,
+        "image": "images/about-image.jpg",
+        "name": "Americano",
+        "price": 4.12
+    },
+    {
+        "id": 3,
+        "image": "images/about-image.jpg",
+        "name": "Cappuccino",
+        "price": 4.23
+    },
+    {
+        "id": 4,
+        "image": "images/about-image.jpg",
+        "name": "Latte",
+        "price": 6.65
+    },
+    {
+        "id": 5,
+        "image": "images/about-image.jpg",
+        "name": "Flat White",
+        "price": 8.43
+    },
+    {
+        "id": 6,
+        "image": "images/about-image.jpg",
+        "name": "Mocha",
+        "price": 6.13
+    },
+    {
+        "id": 7,
+        "image": "images/about-image.jpg",
+        "name": "Hot Chocolate",
+        "price": 7.23
+    },
+    {
+        "id": 8,
+        "image": "images/about-image.jpg",
+        "name": "Iced Coffee",
+        "price": 8.43
+    },
+    {
+        "id": 9,
+        "image": "images/about-image.jpg",
+        "name": "Iced Latte",
+        "price": 4.32
+    },
+    {
+        "id": 10,
+        "image": "images/about-image.jpg",
+        "name": "Cold Brew",
+        "price": 7.34
+    },
+    {
+        "id": 11,
+        "image": "images/about-image.jpg",
+        "name": "Frappuccino",
+        "price": 8.45
+    },
+    {
+        "id": 12,
+        "image": "images/about-image.jpg",
+        "name": "Cheesecake",
+        "price": 2.34
+    },
+    {
+        "id": 13,
+        "image": "images/about-image.jpg",
+        "name": "Chocolate Cake",
+        "price": 7.43
+    },
+    {
+        "id": 14,
+        "image": "images/about-image.jpg",
+        "name": "Croissant",
+        "price": 3.43
+    },
+    {
+        "id": 15,
+        "image": "images/about-image.jpg",
+        "name": "Tiramisu",
+        "price": 3.43
+    }
+]
