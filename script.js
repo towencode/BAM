@@ -6,8 +6,10 @@ const closeBtn = document.querySelector(".menu-cart__cart-closeBtn");
 const Menu = document.querySelector(".menu");
 const Cart = document.querySelector(".menu-cart__cart-items");
 const TotalPriceEl = document.querySelector(".menu-cart__cart-totalPrice");
+const CategoresHTML = document.querySelector(".categories");
 let listItems = [];
 let listCarts = [];
+let listcategories = [];
 
 // Navbar Active Element
 navbarMenu.forEach(link => {
@@ -218,3 +220,66 @@ const initApp = () => {
 }
 
 initApp();
+
+
+// Create Categories Item
+
+const renderButtons = () => {
+    let prveButton = createEl("button", "categories__backBtm", {type: "button"});
+    let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
+
+
+    // Seting Value 
+    const PRVE_TEXT = "<";
+    const NEXT_BUTTON = ">";
+    prveButton.textContent = PRVE_TEXT;
+    nextButton.textContent = NEXT_BUTTON;
+
+    CategoresHTML.appendChild(prveButton);
+    CategoresHTML.appendChild(nextButton);
+}
+
+
+const renderCategories = () => {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+const CategoriesFetch = () => {
+
+    try{
+        
+fetch('categorie-items.json')
+    .then(response => {
+
+        if (!response.ok) 
+            throw new Error("Network Error");
+
+        return response.json();
+
+    })
+    .then(data => {
+        listcategories = data;
+        renderCategories();
+        console.log(listcategories);
+    });
+    }
+    catch(error) {
+        console.error(error);
+    }
+
+}
+
+
+renderButtons();
+CategoriesFetch();
