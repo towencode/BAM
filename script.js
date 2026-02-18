@@ -223,11 +223,16 @@ initApp();
 
 
 // Create Categories Item
+let slideIndex = 0;
+let intervalId = null;
+
 
 const renderButtons = () => {
     let prveButton = createEl("button", "categories__backBtm", {type: "button"});
     let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
 
+    prveButton.addEventListener("click", prveSLide);
+    nextButton.addEventListener("click", nextSlide);
 
     // Seting Value 
     const PRVE_TEXT = "<";
@@ -239,8 +244,52 @@ const renderButtons = () => {
     CategoresHTML.appendChild(nextButton);
 }
 
+document.addEventListener("DOMContentLoaded", initiazSlide);
+
+function initiazSlide() {
+    CategoresHTML[slideIndex].classList.add("categories__item--active");
+    intervalId = setInterval(nextSlide, 5000);
+}
+
+function showSlide(index) {
+
+    if (index >= CategoresHTML.length) {
+        slideIndex = 0;
+    }
+    else if (index < 0) {
+        slideIndex = CategoresHTML.length - 1 ;
+
+    }
+    else {
+        slideIndex = index;
+    }
+
+    CategoresHTML.forEach(item => {
+        item.classList.remove("categories__item--active");
+    });
+
+    CategoresHTML[slideIndex].classList.add("categories__item--active");
+}
+
+function prveSLide() {}
+
+function nextSlide() {}
+
 
 const renderCategories = () => {
+
+    CategoresHTML.innerHTML = ``;
+    let catrgory = createEl("li", "categories__item");
+    let fileDiv = createEl("div", "categories__item-files");
+    const img = createEl("img", "categories__item-image");
+    const detailsDiv = createEl("div", "categories__item-details");
+    const title = createEl("div", "categories__item-title");
+    const subtitle = createEl("div", "categories__item-subtitle");
+    const price = createEl("div", "categories__item-price");
+    const btnsDiv = createEl("div", "categories__item-btns");
+    const orderBtn = createEl("button", "categories__item-likethisBtn");
+    const moreBtn = createEl("button", "categories__item-moreBtn");
+    
 
 }
 

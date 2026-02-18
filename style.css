@@ -650,7 +650,7 @@
     padding: 40px;
 }
 
-.categories__item:active {
+.categories__item--active {
     display: flex;
 }
 
@@ -702,7 +702,7 @@
 }
 
 .categories__item-ordernowBtn,
-.categories__item-likethisBtn {
+.categories__item-moreBtn {
     font-family: "Playwrite NZ Basic", "cursive";
     background: transparent;
     border: 2px solid transparent;
@@ -714,7 +714,7 @@
     transition: all 0.3s ease;
 }
 .categories__item-likethisBtn:hover,
-.categories__item-ordernowBtn {
+.categories__item-moreBtn {
     background: #c69c6c;
     color: #1c1c1c;
     border-color: #1c1c1c
