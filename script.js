@@ -226,7 +226,7 @@ initApp();
 let slideIndex = 0;
 let intervalId = null;
 
-
+/*
 const renderButtons = () => {
     let prveButton = createEl("button", "categories__backBtm", {type: "button"});
     let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
@@ -271,34 +271,54 @@ function showSlide(index) {
     CategoresHTML[slideIndex].classList.add("categories__item--active");
 }
 
-function prveSLide() {}
+function prveSLide() {
+    clearInterval(intervalId);
+    showSlide(slideIndex -1);
+}
 
-function nextSlide() {}
-
+function nextSlide() {
+    showSlide(slideIndex + 1);
+}
+*/
 
 const renderCategories = () => {
 
     CategoresHTML.innerHTML = ``;
-    let catrgory = createEl("li", "categories__item");
+    const fragment = document.createDocumentFragment();
+    if(!listcategories.length) return;
+    listcategories.forEach(category => {
+
+        const imgURL = category.image || "image/Esperso.jpg";
+    let newCatrgory = createEl("li", "categories__item");
     let fileDiv = createEl("div", "categories__item-files");
-    const img = createEl("img", "categories__item-image");
+    const img = createEl("img", "categories__item-image", {src: imgURL});
     const detailsDiv = createEl("div", "categories__item-details");
     const title = createEl("div", "categories__item-title");
     const subtitle = createEl("div", "categories__item-subtitle");
     const price = createEl("div", "categories__item-price");
-    const btnsDiv = createEl("div", "categories__item-btns");
+    let btnsDiv = createEl("div", "categories__item-btns");
     const orderBtn = createEl("button", "categories__item-likethisBtn");
     const moreBtn = createEl("button", "categories__item-moreBtn");
-    
 
+    newCatrgory.dataset.id = category.id;
+
+     // Set The Values
+    title.textContent = category.name;
+    subtitle.textContent = category.subtitle;
+    price.textContent = category.price;
+    orderBtn.textContent = "Order Now";
+    moreBtn.textContent = "More";
+
+    // Appending Children
+
+    fileDiv.appendChild(img);
+    appendChildren(btnsDiv, orderBtn, moreBtn);
+    appendChildren(detailsDiv, title, subtitle, price, btnsDiv);
+    appendChildren(newCatrgory, fileDiv, detailsDiv, btnsDiv);
+    fragment.appendChild(newCatrgory);
+    });
+    CategoresHTML.appendChild(fragment);
 }
-
-
-
-
-
-
-
 
 
 
@@ -330,5 +350,5 @@ fetch('categorie-items.json')
 }
 
 
-renderButtons();
+// renderButtons();
 CategoriesFetch();
