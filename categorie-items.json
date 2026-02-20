@@ -1,37 +1,10 @@
 [
     {
         "id": 1,
-        "image": "image/Esperso.jpg",
+        "image": "images/Esperso.jpg",
         "name": "Esperso",
         "subtitle": "Pure intensity in every sip. A bold and aromatic shot crafted for those who love coffee in its strongest form.",
         "price": 2.54
-    },
-    {
-        "id": 2,
-        "image": "image/mocha.jpg",
-        "name": "Mocha",
-        "subtitle": "Where rich chocolate meets smooth espresso. A comforting blend that feels like a warm hug in a cup.",
-        "price": 6.13
-    },
-    {
-        "id": 3,
-        "image": "image/frappuccino.jpg",
-        "name": "Frappuccino",
-        "subtitle": "Velvety smooth and perfectly sweet, made to warm your moments and brighten your day.",
-        "price": 8.45
-    },
-    {
-        "id":4,
-        "image": "image/cold-brew.jpg",
-        "name": "Cold Brew",
-        "subtitle": "Slow-steeped for hours to create a naturally smooth and refreshing coffee experience with a mellow finish.",
-        "price": 7.34
-    },
-    {
-        "id": 5,
-        "image": "image/hot-chocolate.jpg",
-        "name": "Hot Chocolate",
-        "subtitle": "Cool, creamy, and irresistibly smooth — the perfect refreshing escape for any time of the day.",
-        "price": 7.23
     }
 ]
+

@@ -226,13 +226,13 @@ initApp();
 let slideIndex = 0;
 let intervalId = null;
 
-/*
+
 const renderButtons = () => {
     let prveButton = createEl("button", "categories__backBtm", {type: "button"});
     let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
 
-    prveButton.addEventListener("click", prveSLide);
-    nextButton.addEventListener("click", nextSlide);
+    //prveButton.addEventListener("click", prveSLide);
+    //nextButton.addEventListener("click", nextSlide);
 
     // Seting Value 
     const PRVE_TEXT = "<";
@@ -243,7 +243,7 @@ const renderButtons = () => {
     CategoresHTML.appendChild(prveButton);
     CategoresHTML.appendChild(nextButton);
 }
-
+/*
 document.addEventListener("DOMContentLoaded", initiazSlide);
 
 function initiazSlide() {
@@ -288,16 +288,15 @@ const renderCategories = () => {
     if(!listcategories.length) return;
     listcategories.forEach(category => {
 
-        const imgURL = category.image || "image/Esperso.jpg";
     let newCatrgory = createEl("li", "categories__item");
     let fileDiv = createEl("div", "categories__item-files");
-    const img = createEl("img", "categories__item-image", {src: imgURL});
-    const detailsDiv = createEl("div", "categories__item-details");
+    const Img = createEl("img", "categories__item-image", {src: category.image});
+    let detailsDiv = createEl("div", ".categories__item-details");
     const title = createEl("div", "categories__item-title");
     const subtitle = createEl("div", "categories__item-subtitle");
     const price = createEl("div", "categories__item-price");
     let btnsDiv = createEl("div", "categories__item-btns");
-    const orderBtn = createEl("button", "categories__item-likethisBtn");
+    const orderBtn = createEl("button", "categories__item-ordernowBtn");
     const moreBtn = createEl("button", "categories__item-moreBtn");
 
     newCatrgory.dataset.id = category.id;
@@ -311,7 +310,7 @@ const renderCategories = () => {
 
     // Appending Children
 
-    fileDiv.appendChild(img);
+    fileDiv.appendChild(Img);
     appendChildren(btnsDiv, orderBtn, moreBtn);
     appendChildren(detailsDiv, title, subtitle, price, btnsDiv);
     appendChildren(newCatrgory, fileDiv, detailsDiv, btnsDiv);
@@ -350,5 +349,39 @@ fetch('categorie-items.json')
 }
 
 
-// renderButtons();
+renderButtons();
 CategoriesFetch();
+
+
+
+/*
+,
+    {
+        "id": 2,
+        "image": "images/mocha.jpg",
+        "name": "Mocha",
+        "subtitle": "Where rich chocolate meets smooth espresso. A comforting blend that feels like a warm hug in a cup.",
+        "price": 6.13
+    },
+    {
+        "id": 3,
+        "image": "images/frappuccino.jpg",
+        "name": "Frappuccino",
+        "subtitle": "Velvety smooth and perfectly sweet, made to warm your moments and brighten your day.",
+        "price": 8.45
+    },
+    {
+        "id":4,
+        "image": "images/cold-brew.jpg",
+        "name": "Cold Brew",
+        "subtitle": "Slow-steeped for hours to create a naturally smooth and refreshing coffee experience with a mellow finish.",
+        "price": 7.34
+    },
+    {
+        "id": 5,
+        "image": "images/hot-chocolate.jpg",
+        "name": "Hot Chocolate",
+        "subtitle": "Cool, creamy, and irresistibly smooth — the perfect refreshing escape for any time of the day.",
+        "price": 7.23
+    }
+        */
