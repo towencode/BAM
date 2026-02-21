@@ -227,20 +227,27 @@ let slideIndex = 0;
 let intervalId = null;
 
 
-const renderButtons = () => {
+const renderButtonsleft = () => {
+    const fragment = document.createDocumentFragment();
     let prveButton = createEl("button", "categories__backBtm", {type: "button"});
-    let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
-
+    
     //prveButton.addEventListener("click", prveSLide);
     //nextButton.addEventListener("click", nextSlide);
 
     // Seting Value 
     const PRVE_TEXT = "<";
-    const NEXT_BUTTON = ">";
+    
     prveButton.textContent = PRVE_TEXT;
-    nextButton.textContent = NEXT_BUTTON;
+    
+    fragment.appendChild(prveButton);
+    CategoresHTML.appendChild(fragment);
+}
 
-    CategoresHTML.appendChild(prveButton);
+const renderButtonsright = () => {
+    let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
+
+    const NEXT_BUTTON = ">";
+    nextButton.textContent = NEXT_BUTTON;
     CategoresHTML.appendChild(nextButton);
 }
 /*
@@ -291,7 +298,7 @@ const renderCategories = () => {
     let newCatrgory = createEl("li", "categories__item");
     let fileDiv = createEl("div", "categories__item-files");
     const Img = createEl("img", "categories__item-image", {src: category.image});
-    let detailsDiv = createEl("div", ".categories__item-details");
+    let detailsDiv = createEl("div", "categories__item-details");
     const title = createEl("div", "categories__item-title");
     const subtitle = createEl("div", "categories__item-subtitle");
     const price = createEl("div", "categories__item-price");
@@ -302,9 +309,10 @@ const renderCategories = () => {
     newCatrgory.dataset.id = category.id;
 
      // Set The Values
+     const price__text = `$${category.price}`;
     title.textContent = category.name;
     subtitle.textContent = category.subtitle;
-    price.textContent = category.price;
+    price.textContent = price__text;
     orderBtn.textContent = "Order Now";
     moreBtn.textContent = "More";
 
@@ -313,7 +321,7 @@ const renderCategories = () => {
     fileDiv.appendChild(Img);
     appendChildren(btnsDiv, orderBtn, moreBtn);
     appendChildren(detailsDiv, title, subtitle, price, btnsDiv);
-    appendChildren(newCatrgory, fileDiv, detailsDiv, btnsDiv);
+    appendChildren(newCatrgory, fileDiv, detailsDiv);
     fragment.appendChild(newCatrgory);
     });
     CategoresHTML.appendChild(fragment);
@@ -349,8 +357,21 @@ fetch('categorie-items.json')
 }
 
 
-renderButtons();
+renderButtonsleft();
 CategoriesFetch();
+renderButtonsright();
+/*
+
+[
+    {
+        "id": 1,
+        "image": "images/Esperso.jpg",
+        "name": "Esperso",
+        "subtitle": "Pure intensity in every sip. A bold and aromatic shot crafted for those who love coffee in its strongest form.",
+        "price": 2.54
+    }
+]
+
 
 
 

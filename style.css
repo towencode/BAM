@@ -607,7 +607,7 @@
 .categories {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 40px;
     max-width: 1600px;
     width: 100%;
@@ -713,15 +713,15 @@
     color: #c69c6c;
     transition: all 0.3s ease;
 }
-.categories__item-likethisBtn:hover,
-.categories__item-moreBtn {
+.categories__item-moreBtn:hover,
+.categories__item-ordernowBtn {
     background: #c69c6c;
     color: #1c1c1c;
     border-color: #1c1c1c
 }
 
 .categories__item-ordernowBtn:hover,
-.categories__item-likethisBtn {
+.categories__item-moreBtn {
     background: transparent;
     border-color: #1c1c1c;
     color: #c69c6c;
