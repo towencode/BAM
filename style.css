@@ -607,15 +607,15 @@
 .categories {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0 40px;
     max-width: 1600px;
     width: 100%;
     height: 100vh;
-    background: url(images/hero-background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: all 0.3s ease;
 }
 
 .categories__backBtm,
@@ -637,11 +637,11 @@
 }
 
 .categories__item {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    max-width: 900px;
+    max-width: 1100px;
     width: 100%;
     height: 600;
     background: #c69c6c33;
@@ -655,7 +655,7 @@
 }
 
 .categories__item-files {
-    max-width: 400px;
+    max-width: 800px;
     width: 100%;
 }
 
@@ -683,7 +683,7 @@
     font-family: "Playwrite NZ Basic", "cursive";
     font-size: 1.8rem;
     font-weight: 700;
-    color: #3b2f2f;
+    color: #171414;
 }
 
 .categories__item-price {

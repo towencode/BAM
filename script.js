@@ -223,22 +223,19 @@ initApp();
 
 
 // Create Categories Item
-let slideIndex = 0;
-let intervalId = null;
+
 
 
 const renderButtonsleft = () => {
     const fragment = document.createDocumentFragment();
     let prveButton = createEl("button", "categories__backBtm", {type: "button"});
     
-    //prveButton.addEventListener("click", prveSLide);
-    //nextButton.addEventListener("click", nextSlide);
+    prveButton.addEventListener("click", prveSLide);
+    
 
     // Seting Value 
     const PRVE_TEXT = "<";
-    
     prveButton.textContent = PRVE_TEXT;
-    
     fragment.appendChild(prveButton);
     CategoresHTML.appendChild(fragment);
 }
@@ -246,51 +243,19 @@ const renderButtonsleft = () => {
 const renderButtonsright = () => {
     let nextButton = createEl("button", "categories__nextBtn", {type: "button"});
 
+    nextButton.addEventListener("click", nextSlide);
+
+    // Seting Value 
     const NEXT_BUTTON = ">";
     nextButton.textContent = NEXT_BUTTON;
     CategoresHTML.appendChild(nextButton);
 }
-/*
-document.addEventListener("DOMContentLoaded", initiazSlide);
-
-function initiazSlide() {
-    CategoresHTML[slideIndex].classList.add("categories__item--active");
-    intervalId = setInterval(nextSlide, 5000);
-}
-
-function showSlide(index) {
-
-    if (index >= CategoresHTML.length) {
-        slideIndex = 0;
-    }
-    else if (index < 0) {
-        slideIndex = CategoresHTML.length - 1 ;
-
-    }
-    else {
-        slideIndex = index;
-    }
-
-    CategoresHTML.forEach(item => {
-        item.classList.remove("categories__item--active");
-    });
-
-    CategoresHTML[slideIndex].classList.add("categories__item--active");
-}
-
-function prveSLide() {
-    clearInterval(intervalId);
-    showSlide(slideIndex -1);
-}
-
-function nextSlide() {
-    showSlide(slideIndex + 1);
-}
-*/
 
 const renderCategories = () => {
 
     CategoresHTML.innerHTML = ``;
+    renderButtonsleft();
+
     const fragment = document.createDocumentFragment();
     if(!listcategories.length) return;
     listcategories.forEach(category => {
@@ -325,11 +290,9 @@ const renderCategories = () => {
     fragment.appendChild(newCatrgory);
     });
     CategoresHTML.appendChild(fragment);
+    renderButtonsright();
+
 }
-
-
-
-
 
 const CategoriesFetch = () => {
 
@@ -347,7 +310,9 @@ fetch('categorie-items.json')
     .then(data => {
         listcategories = data;
         renderCategories();
-        console.log(listcategories);
+
+        Slider = document.querySelectorAll(".categories__item");
+        initiazSlide();
     });
     }
     catch(error) {
@@ -357,52 +322,51 @@ fetch('categorie-items.json')
 }
 
 
-renderButtonsleft();
 CategoriesFetch();
-renderButtonsright();
-/*
 
-[
-    {
-        "id": 1,
-        "image": "images/Esperso.jpg",
-        "name": "Esperso",
-        "subtitle": "Pure intensity in every sip. A bold and aromatic shot crafted for those who love coffee in its strongest form.",
-        "price": 2.54
+let slideIndex = 0;
+let intervalId = null;
+let Slider = [];
+
+
+
+function initiazSlide() {
+    // SLider[slideIndex].classList.add("categories__item--");
+    showSlide(0);
+    intervalId = setInterval(nextSlide, 5000);
+}
+
+function showSlide(index) {
+
+    if (index >= Slider.length) {
+        slideIndex = 0;
     }
-]
+    else if (index < 0) {
+        slideIndex = Slider.length - 1 ;
 
-
-
-
-/*
-,
-    {
-        "id": 2,
-        "image": "images/mocha.jpg",
-        "name": "Mocha",
-        "subtitle": "Where rich chocolate meets smooth espresso. A comforting blend that feels like a warm hug in a cup.",
-        "price": 6.13
-    },
-    {
-        "id": 3,
-        "image": "images/frappuccino.jpg",
-        "name": "Frappuccino",
-        "subtitle": "Velvety smooth and perfectly sweet, made to warm your moments and brighten your day.",
-        "price": 8.45
-    },
-    {
-        "id":4,
-        "image": "images/cold-brew.jpg",
-        "name": "Cold Brew",
-        "subtitle": "Slow-steeped for hours to create a naturally smooth and refreshing coffee experience with a mellow finish.",
-        "price": 7.34
-    },
-    {
-        "id": 5,
-        "image": "images/hot-chocolate.jpg",
-        "name": "Hot Chocolate",
-        "subtitle": "Cool, creamy, and irresistibly smooth — the perfect refreshing escape for any time of the day.",
-        "price": 7.23
     }
-        */
+    else {
+        slideIndex = index;
+    }
+
+    Slider.forEach(item => {
+        item.classList.remove("categories__item--active");
+    });
+
+    let activeSlide = Slider[slideIndex];
+    activeSlide.classList.add("categories__item--active");
+
+    const img = activeSlide.querySelector("img").src;
+
+    // SLider[slideIndex].classList.add("categories__item--active");
+    CategoresHTML.style.backgroundImage = `url(${img})`;
+}
+
+function prveSLide() {
+    clearInterval(intervalId);
+    showSlide(slideIndex -1);
+}
+
+function nextSlide() {
+    showSlide(slideIndex + 1);
+}
