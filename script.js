@@ -370,3 +370,11 @@ function prveSLide() {
 function nextSlide() {
     showSlide(slideIndex + 1);
 }
+
+const CategoriesBtn = document.querySelector(".categories__toggle");
+const CategoiresMenu = document.querySelector(".categoriesMenu");
+
+CategoriesBtn.addEventListener("click", () => {
+    CategoiresMenu.classList.toggle("categoriesMenu--active");
+    CategoriesBtn.classList.toggle("categories__toggle--active");
+});
