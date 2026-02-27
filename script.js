@@ -373,8 +373,58 @@ function nextSlide() {
 
 const CategoriesBtn = document.querySelector(".categories__toggle");
 const CategoiresMenu = document.querySelector(".categoriesMenu");
+let categoiresMenuList = [];
 
 CategoriesBtn.addEventListener("click", () => {
     CategoiresMenu.classList.toggle("categoriesMenu--active");
     CategoriesBtn.classList.toggle("categories__toggle--active");
 });
+
+
+const renderCategoriesMenu = () => {
+    CategoiresMenu.innerHTML = ``;
+    const fragment = createDocumentFragment();
+    if (!categoiresMenuList.length) return;
+    categoiresMenuList.forEach(item => {
+
+        // Createing Elements And Add Class
+        let newItem = createEl("li", "categoriesMenu__item");
+        let img = createEl("img", "categoriesMenu__item-image", {src: item.image});
+        let name = createEl("div", "categoriesMenu__item-name");
+
+        // Seting The Values
+        name.textContent = item.name;
+
+        // Appending Childern
+        appendChildren(newItem, img, name);
+        fragment.appendChild(newItem);
+    });
+    CategoiresMenu.appendChild(fragment);
+}
+
+
+
+
+
+const categoriesmenuFetch = () => {
+
+    try {
+        fetch('categoriesMenu.json')
+        .then(response => {
+
+            if (!response.ok) 
+                throw new Error("NetWork Error");
+
+            return response.json();
+        })
+        .then(data => {
+            categoiresMenuList = data;
+            renderCategoriesMenu();
+        })
+    }
+    catch(error) {
+        console.error("Error");
+    }
+};
+
+categoriesmenuFetch();

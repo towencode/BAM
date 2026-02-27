@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "image": "images/Esperso.jpg",
+        "name": "Esperso"
+    },
+    {
+        "id": 2,
+        "image": "images/mocha.jpg",
+        "name": "Mocha"
+    },
+    {
+        
+        "id": 3,
+        "image": "images/frappuccino.jpg",
+        "name": "Frappuccino"
+    },
+    {
+        "id":4,
+        "image": "images/cold-brew.jpg",
+        "name": "Cold Brew"
+    },
+    {
+        "id": 5,
+        "image": "images/hot-chocolate.jpg",
+        "name": "Hot Chocolate"
+    }
+]
