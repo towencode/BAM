@@ -324,15 +324,18 @@ fetch('categorie-items.json')
 
 CategoriesFetch();
 
+const categoriesMenuu = document.querySelectorAll(".categoriesMenu .categoriesMenu__item");
 let slideIndex = 0;
 let intervalId = null;
 let Slider = [];
 
 
 
+
 function initiazSlide() {
-    // SLider[slideIndex].classList.add("categories__item--");
+    // Slider[slideIndex].classList.add("categories__item--");
     showSlide(0);
+    categoriesMenuu[slideIndex].classList.add("categoriesMenu__item--active");
     intervalId = setInterval(nextSlide, 5000);
 }
 
@@ -353,13 +356,20 @@ function showSlide(index) {
         item.classList.remove("categories__item--active");
     });
 
+    categoriesMenuu.forEach(category => {
+        category.classList.remove("categoriesMenu__item--active");
+    });
+
     let activeSlide = Slider[slideIndex];
     activeSlide.classList.add("categories__item--active");
+
+    
 
     const img = activeSlide.querySelector("img").src;
 
     // SLider[slideIndex].classList.add("categories__item--active");
     CategoresHTML.style.backgroundImage = `url(${img})`;
+    categoriesMenuu[slideIndex].classList.add("categoriesMenu__item--active");
 }
 
 function prveSLide() {
@@ -371,19 +381,22 @@ function nextSlide() {
     showSlide(slideIndex + 1);
 }
 
-const CategoriesBtn = document.querySelector(".categories__toggle");
-const CategoiresMenu = document.querySelector(".categoriesMenu");
-let categoiresMenuList = [];
+Slider.forEach((slide, index) => {
+    slide.addEventListener("click", () => {
+        showSlide(index);
+    });
+});
 
-CategoriesBtn.addEventListener("click", () => {
-    CategoiresMenu.classList.toggle("categoriesMenu--active");
-    CategoriesBtn.classList.toggle("categories__toggle--active");
+categoriesMenuu.forEach((categoriy, index) => {
+    categoriy.addEventListener("click", () => {
+        showSlide((index));
+    });
 });
 
 
 const renderCategoriesMenu = () => {
     CategoiresMenu.innerHTML = ``;
-    const fragment = createDocumentFragment();
+    const fragment = document.createDocumentFragment();
     if (!categoiresMenuList.length) return;
     categoiresMenuList.forEach(item => {
 
@@ -406,25 +419,30 @@ const renderCategoriesMenu = () => {
 
 
 
-const categoriesmenuFetch = () => {
-
+const categoriesmenuFetch = async () => {
     try {
-        fetch('categoriesMenu.json')
-        .then(response => {
 
-            if (!response.ok) 
-                throw new Error("NetWork Error");
+        const response = await fetch('categoriesMenu.json');
 
-            return response.json();
-        })
-        .then(data => {
-            categoiresMenuList = data;
-            renderCategoriesMenu();
-        })
+        if (!response.ok)
+            throw new Error("Network Error");
+
+        const data = await response.json();
+        categoiresMenuList = data;
+        renderCategoriesMenu();
     }
     catch(error) {
-        console.error("Error");
+        console.error(error);
     }
-};
-
+}
 categoriesmenuFetch();
+
+
+const CategoriesBtn = document.querySelector(".categories__toggle");
+const CategoiresMenu = document.querySelector(".categoriesMenu");
+let categoiresMenuList = [];
+
+CategoriesBtn.addEventListener("click", () => {
+    CategoiresMenu.classList.toggle("categoriesMenu--active");
+    CategoriesBtn.classList.toggle("categories__toggle--active");
+});

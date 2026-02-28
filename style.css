@@ -811,6 +811,10 @@
     border: 2px solid transparent;
 }
 
+.categoriesMenu__item--active {
+    border-color: #c69c6c;
+} 
+
 .categoriesMenu__item-image {
     max-width: 80px;
     width: 100%;
